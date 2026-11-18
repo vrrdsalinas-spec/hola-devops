@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hola DevOps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #34495e;
+        }
+        /* Estilo para la notificación que aparecerá en tiempo real */
+        .notificacion {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f8f5;
+            border: 1px solid #27ae60;
+            color: #27ae60;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Hola, DevOps!</h1>
+        <p>Mi primera aplicación ejecutada en un contenedor Docker.</p>
+        <hr>   
+        <h3>Registro de Asistencia</h3>
+        <!-- Formulario sin recarga -->
+        <form id="formAsistencia">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre..." required><br>
+            <label for="comentario">Comentario:</label><br>
+            <textarea id="comentario" name="comentario" rows="3" placeholder="Escribe un comentario..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+        <!-- Cuadro de notificación interactivo -->
+        <div id="alertaExito" class="notificacion"></div>
+    </div>
+    <script>
+        // Código JavaScript para capturar los datos y mostrarlos al instante
+        const formulario = document.getElementById('formAsistencia');
+        const alertaExito = document.getElementById('alertaExito');
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página se recargue
+            // Obtenemos los valores escritos en los inputs
+            const nombre = document.getElementById('nombre').value;
+            const comentario = document.getElementById('comentario').value;
+            // Mostramos la notificación en pantalla con los datos
+            alertaExito.style.display = 'block';
+            alertaExito.innerHTML = `<strong>¡Registro exitoso!</strong><br>¡Hola, <strong>${nombre}</strong>! Tu comentario fue: <em>"${comentario}"</em>`;
+            // Limpiamos el formulario
+            formulario.reset();
+        });
+    </script>
+</body>
+</html>
